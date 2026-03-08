@@ -157,19 +157,26 @@ body {
     animation: fadeIn 1s ease-in-out;
     max-width: 90%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .greeting {
     font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     font-weight: 700;
+    margin: 0 0 10px 0;
 }
 
 .name {
     font-family: 'Pacifico', cursive;
     font-size: 4rem;
     color: var(--accent-color);
-    margin: 0;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
 }
 
 .typewriter-cursor {
@@ -182,8 +189,10 @@ body {
 
 .wish-message {
     font-size: 1.2rem;
-    margin-top: 20px;
+    margin: 20px auto;
     max-width: 600px;
+    line-height: 1.6;
+    padding: 0 15px;
 }
 
 @keyframes fadeIn {
@@ -194,6 +203,79 @@ body {
 @keyframes blink {
     from, to { background-color: transparent }
     50% { background-color: var(--accent-color); }
+}
+
+/* ===== PHOTO GALLERY ===== */
+.photo-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-frame {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    padding: 8px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+    animation: photoFloat 3s ease-in-out infinite;
+}
+
+.photo-frame:nth-child(1) {
+    animation-delay: 0s;
+    transform: rotate(-5deg);
+}
+
+.photo-frame:nth-child(2) {
+    animation-delay: 0.5s;
+    transform: rotate(2deg);
+}
+
+.photo-frame:nth-child(3) {
+    animation-delay: 1s;
+    transform: rotate(-3deg);
+}
+
+.photo-frame:nth-child(4) {
+    animation-delay: 1.5s;
+    transform: rotate(4deg);
+}
+
+.photo-frame:nth-child(5) {
+    animation-delay: 2s;
+    transform: rotate(-2deg);
+}
+
+.photo-frame:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    box-shadow: 0 12px 30px rgba(233, 69, 96, 0.5);
+    z-index: 10;
+}
+
+.memory-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+@keyframes photoFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(var(--rotation, 0deg));
+    }
+    50% {
+        transform: translateY(-10px) rotate(var(--rotation, 0deg));
+    }
 }
 
 /* ===== CAKE & BALLOONS ===== */
@@ -242,7 +324,106 @@ body {
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 600px) {
-    .name { font-size: 3rem; }
-    .wish-message { font-size: 1rem; }
-    .cake { transform: scale(0.8); }
+    body {
+        padding: 10px;
+    }
+    
+    .final-card-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+    
+    .greeting {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    
+    .name {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .wish-message {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+    
+    .photo-gallery {
+        gap: 10px;
+        max-width: 100%;
+        margin: 20px 0;
+    }
+    
+    .photo-frame {
+        width: 90px;
+        height: 90px;
+        padding: 5px;
+    }
+    
+    .cake {
+        transform: scale(0.7);
+        margin: 20px auto 10px;
+    }
+    
+    .envelope {
+        width: 250px;
+        height: 166px;
+    }
+    
+    .letter {
+        width: 280px;
+        padding: 20px;
+    }
+    
+    .letter p {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .greeting {
+        font-size: 1.8rem;
+    }
+    
+    .name {
+        font-size: 3.5rem;
+    }
+    
+    .wish-message {
+        font-size: 1.1rem;
+    }
+    
+    .photo-frame {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .cake {
+        transform: scale(0.85);
+    }
+}
+
+@media (max-width: 400px) {
+    .greeting {
+        font-size: 1.3rem;
+    }
+    
+    .name {
+        font-size: 2rem;
+    }
+    
+    .wish-message {
+        font-size: 0.9rem;
+    }
+    
+    .photo-frame {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .photo-gallery {
+        gap: 8px;
+    }
 }
